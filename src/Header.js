@@ -7,11 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import SearchIcon from '@material-ui/icons/Search';
+import { useStateValue } from './StateProvider';
 
 
-const basket = <FontAwesomeIcon icon={faShoppingCart} />
+const basketstore = <FontAwesomeIcon icon={faShoppingCart} />
 
 function Header() {
+  const [{ basket }] = useStateValue();
+console.log(basket);
+
   return (
     <nav className="header">
       <Link to="/">
@@ -46,8 +50,8 @@ function Header() {
 
         <Link to="/checkout" className="header__link">
           <div className="header__optionBasket">
-            {basket}
-            <span className="header__optionLineTwo header__basketCount">0</span>
+            {basketstore}
+            <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
           </div>
         </Link>
 
