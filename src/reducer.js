@@ -1,11 +1,5 @@
 export const initialState = {
-  basket: [{
-   id:"1234315",
-   title:"The Lean Startup How constant innovation creates radically successful Businesses",
-   price:11.96,
-   rating:5,
-   image:"/leanstartup.png"
-  }],
+  basket: [],
   user: null,
 };
 
@@ -15,6 +9,11 @@ export const getBasketTotal = (basket) =>
 const reducer = (state, action) => {
   console.log(action);
   switch(action.type) {
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.user
+      }
     case "ADD_TO_BASKET":
       return {
         ...state,

@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { auth } from "./firebase"
 
 function Login() {
-
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,9 +12,9 @@ function Login() {
     event.preventDefault();
     auth.signInWithEmailAndPassword(email,password)
       .then((auth) => {
-
+        history.push('/');
       })
-      .catch((e) = alert(e.message))
+      .catch((event) = alert(event.message))
   };
 
   const register = event => {
@@ -22,9 +22,9 @@ function Login() {
 
     auth.createUserWithEmailAndPassword(email, password)
       .then(auth => {
-
+        history.push('/');
       })
-      .catch((e) = alert(e.message))
+      .catch((event) = alert(event.message))
   };
 
   return (
